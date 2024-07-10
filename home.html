@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <title>Details Verification</title>
+    <style>
+        .dropbtn {
+            background-color: #a1a4a3;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+          }
+          
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+          
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+          }
+          
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+          .dropdown-content a:hover {background-color: #ddd;}
+          .dropdown:hover .dropdown-content {display: block;}
+          .dropdown:hover .dropbtn {background-color: #494a49;}
+
+          table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #505450;
+            color: #fff;
+        }
+        </style>
+    <head>
+        <h2>STUDENTS DETAILS VERIFICATION</h2>
+    </head>
+    <body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br><br>
+        <div class="dropdown">
+            <select id="myDropdown">
+                <option value="0" selected="selected">Department</option>
+                <option value="CSE">CSE</option>
+                <option value="IT" >IT</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+              </select>
+            
+          </div>
+        <h3>Select Year</h3>
+        <div id="yr">
+        Year :
+        <input type="radio" name="year" id="y1" value="First">First
+        <input type="radio" name="year" id="y2" value="Second">Second
+        <input type="radio" name="year" id="y3" value="Third">Third
+        <input type="radio" name="year" id="y4" value="Forth">Forth
+    </div>
+        <br>
+        <div id="result"></div>
+        <input type="button" value="Generate a table" onclick="testResults (this.form)" />
+    </form>
+    <table id="outputTable">
+        <tr>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Year</th>
+        </tr>
+    </table>
+    
+<script>
+    document.getElementById("id").submit()     
+function testResults (form) {
+    /*names=["Name"]
+    depts=["Dept"]
+    years=["Year"]*/
+    var name = form.name.value;
+    //names.push(name)
+    const dropdown = document.getElementById("myDropdown");
+    const dept = dropdown.value;
+    //depts.push(depts)
+    var radioButtonGroup = document.getElementsByName("year");
+    var checkedRadio = Array.from(radioButtonGroup).find(
+       (radio) => radio.checked
+    );
+    const year=checkedRadio.value
+    //years.push( checkedRadio.value)
+
+    let table = document.getElementById("outputTable");
+    let newRow = table.insertRow(table.rows.length);
+
+    // Insert data into cells of the new row
+    newRow.insertCell(0).innerHTML = name;
+    newRow.insertCell(1).innerHTML = dept;
+    newRow.insertCell(2).innerHTML = year;
+
+        /*const tbl = document.createElement("table");
+        const tblBody = document.createElement("tbody");
+      
+        for (let i = 0; i < length.names; i++) {
+          const row = document.createElement("tr");
+            
+            var nameCell = document.createElement("td");
+            var deptCell = document.createElement("td");
+            var yearCell = document.createElement("td");
+
+            var name = document.createTextNode(names[i]);
+            var dep = document.createTextNode(depts[i]);
+            var year = document.createTextNode(years[i]);
+                
+            nameCell.appendChild(name);
+            deptCell.appendChild(dep);
+            yearCell.appendChild(year);
+
+        
+          tblBody.appendChild(row);
+        }
+        tbl.appendChild(tblBody);
+        document.body.appendChild(tbl);
+        tbl.setAttribute("border", "2");
+      */
+    }
+    console.table
+
+    //document.write("<p> Name : "+ name + "<br> Dept :  "+ dept + "<br>Year : " + checkedRadio.value + "</p>"); 
+ 
+    function myFunction1() {
+        var checkBox = document.getElementById("myCheck");
+        var text = document.getElementById("text");
+        if (checkBox.checked == true){
+          text.style.display = "block";
+        } else {
+           text.style.display = "none";
+        }
+      }
+
+    </script>
+    </body>
+</html>
